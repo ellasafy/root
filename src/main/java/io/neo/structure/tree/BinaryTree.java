@@ -1,4 +1,4 @@
-package io.neo.tree.binary;
+package io.neo.structure.tree;
 
 import java.util.LinkedList;
 
@@ -7,10 +7,10 @@ import java.util.LinkedList;
  */
 public class BinaryTree {
 
-    private BinaryTree parent;
-    private int value;
-    private BinaryTree left;
-    private BinaryTree right;
+    public BinaryTree parent;
+    public int value;
+    public BinaryTree left;
+    public BinaryTree right;
 
 
     public BinaryTree() {
@@ -77,7 +77,7 @@ public class BinaryTree {
         while (!queue.isEmpty()) {
             BinaryTree tmp = queue.removeFirst();
 
-            System.out.print(getStrt(height --) + tmp.getValue());
+            System.out.print(getStrt(height) + " " +  tmp.getValue());
             if (tmp.getLeft() != null) {
                 queue2.add(tmp.getLeft());
             }
@@ -90,6 +90,7 @@ public class BinaryTree {
                     queue.add(queue2.removeFirst());
                 }
                 System.out.println("");
+                height--;
             }
         }
     }

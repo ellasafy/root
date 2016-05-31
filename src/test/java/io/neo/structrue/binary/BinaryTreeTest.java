@@ -1,5 +1,6 @@
-package io.neo.tree.binary;
+package io.neo.structrue.binary;
 
+import io.neo.structure.tree.BinaryTree;
 import org.junit.Test;
 
 /**
