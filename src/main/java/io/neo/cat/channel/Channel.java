@@ -1,4 +1,4 @@
-package io.neo.channel;
+package io.neo.cat.channel;
 
 
 /**
