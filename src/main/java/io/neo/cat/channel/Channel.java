@@ -6,4 +6,10 @@ package io.neo.cat.channel;
  */
 public interface Channel extends AttributeMap,Comparable<Channel> {
 
+    Unsafe unsafe();
+
+    interface Unsafe {
+        void closeForcibly();
+    }
+
 }
