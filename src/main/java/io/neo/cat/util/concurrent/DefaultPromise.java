@@ -7,7 +7,7 @@ import java.util.concurrent.TimeoutException;
 /**
  * Created by echo on 6/13/2016.
  */
-public class DefaultPromise<V> extends AbstractFuture<V> implements Promise<V> {
+public class DefaultPromise<V> implements Promise<V>,Future<V> {
 
     private final EventExecutor executor;
 
@@ -37,6 +37,11 @@ public class DefaultPromise<V> extends AbstractFuture<V> implements Promise<V> {
 
     @Override
     public V get(long timeout, TimeUnit unit) throws InterruptedException, ExecutionException, TimeoutException {
+        return null;
+    }
+
+    @Override
+    public Throwable cause() {
         return null;
     }
 }

@@ -22,4 +22,9 @@ public class DefaultChannelPromise extends DefaultPromise<Void> implements Chann
     public ChannelPromise setFailure(Throwable cause) {
         return null;
     }
+
+    @Override
+    public Channel channel() {
+        return null;
+    }
 }

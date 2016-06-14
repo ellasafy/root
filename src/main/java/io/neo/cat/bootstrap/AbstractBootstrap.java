@@ -140,6 +140,8 @@ public abstract class  AbstractBootstrap<B extends AbstractBootstrap<B,C>, C ext
         if (regFuture.cause() != null) {
             return regFuture;
         }
+
+        return null;
     }
 
     final ChannelFuture initAndRegister() {

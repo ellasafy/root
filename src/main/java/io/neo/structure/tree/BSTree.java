@@ -58,6 +58,9 @@ public class BSTree {
         }
 
         BinaryTree b = findValue(root,v);
+        if (b == null) {
+            return;
+        }
         BinaryTree left = b.left;
         BinaryTree right = b.right;
         BinaryTree parent = b.parent;
@@ -69,19 +72,22 @@ public class BSTree {
                 parent.right = null;
             }
         }else if (left == null && right != null) {
-            if (parent == null) {
-                root = root.right;
-            }else {
-                parent.right = right;
-            }
+            parent.right = right;
         } else if (right == null && left != null) {
-            if (parent == null) {
-                root = root.left;
-            }else {
-                parent.left = left;
-            }
+            parent.left = left;
         } else {
             BinaryTree min = findMin(right);
+            if (b.parent.left == b) {
+                b.parent.left = min;
+                min.left = b.left;
+                min.right = b.right;
+                delete(right, min.value);
+            } else {
+                b.parent.right = min;
+                min.left =  b.left;
+                min.right = b.right;
+                delete(left,min.value);
+            }
         }
 
 
@@ -89,12 +95,15 @@ public class BSTree {
     }
 
     public static BinaryTree findValue(BinaryTree root, int v) {
+        if (root == null) {
+            return null;
+        }
         if (root.value == v) {
             return root;
         }else if (root.value > v) {
-            return findMin(root.left);
+            return findValue(root.left,v);
         } else {
-            return findMin(root.right);
+            return findValue(root.right,v);
         }
     }
 

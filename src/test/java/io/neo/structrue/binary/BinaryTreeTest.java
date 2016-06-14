@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class BinaryTreeTest {
 
-    public BinaryTree build() {
+    public static BinaryTree build() {
         BinaryTree t = new BinaryTree(20);
         BinaryTree left1 = new BinaryTree(10);
         left1.setParent(t);
