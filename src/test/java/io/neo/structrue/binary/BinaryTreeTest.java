@@ -1,7 +1,11 @@
 package io.neo.structrue.binary;
 
+import io.neo.structure.tree.BTreePrinter;
 import io.neo.structure.tree.BinaryTree;
 import org.junit.Test;
+
+import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by lunjianchang on 5/26/16.
@@ -44,8 +48,11 @@ public class BinaryTreeTest {
     public void testprint() {
 
 
-        BinaryTree.printTree(build());
-
+        List<BinaryTree> t = Collections.singletonList(build());
+        for (BinaryTree tt : t) {
+            System.out.println(tt.value);
+        }
+        BTreePrinter.printNode(build());
     }
 
     public void binarySearchTreeDelete() {

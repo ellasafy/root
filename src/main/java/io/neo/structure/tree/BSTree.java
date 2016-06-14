@@ -49,4 +49,60 @@ public class BSTree {
         }
 
     }
+
+    public static void delete(BinaryTree root, int v) {
+        if (root == null) {
+            return;
+        }
+
+        BinaryTree b = findValue(root,v);
+        BinaryTree left = b.left;
+        BinaryTree right = b.right;
+        BinaryTree parent = b.parent;
+
+        if (left == null && right == null) {
+            if (parent.left == b) {
+                parent.left = null;
+            }else {
+                parent.right = null;
+            }
+        }else if (left == null && right != null) {
+            if (parent == null) {
+                root = root.right;
+            }else {
+                parent.right = right;
+            }
+        } else if (right == null && left != null) {
+            if (parent == null) {
+                root = root.left;
+            }else {
+                parent.left = left;
+            }
+        } else {
+            BinaryTree min = findMin(right);
+
+        }
+
+
+
+    }
+
+    public static BinaryTree findValue(BinaryTree root, int v) {
+        if (root.value == v) {
+            return root;
+        }else if (root.value > v) {
+            return findMin(root.left);
+        } else {
+            return findMin(root.right);
+        }
+    }
+
+    public static BinaryTree findMin(BinaryTree root) {
+        BinaryTree b = root;
+        while (b.left != null) {
+            b = b.left;
+        }
+
+        return b;
+    }
 }

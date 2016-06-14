@@ -138,6 +138,8 @@ public abstract class  AbstractBootstrap<B extends AbstractBootstrap<B,C>, C ext
             channel.unsafe().closeForcibly();
             return new DefaultChannelPromise(channel, GlobalEventExecutor.INSTANCE).setFailure(t);
         }
+
+        return null;
     }
 
     abstract void init(Channel channel) throws Exception;
