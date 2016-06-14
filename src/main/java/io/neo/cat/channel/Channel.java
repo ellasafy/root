@@ -8,6 +8,10 @@ public interface Channel extends AttributeMap,Comparable<Channel> {
 
     Unsafe unsafe();
 
+    boolean isRegistered();
+
+    ChannelFuture close();
+
     interface Unsafe {
         void closeForcibly();
     }

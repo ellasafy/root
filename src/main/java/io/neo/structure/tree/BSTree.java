@@ -1,5 +1,7 @@
 package io.neo.structure.tree;
 
+import java.util.TreeSet;
+
 /**
  * Created by lunjianchang on 5/31/16.
  */
@@ -80,7 +82,6 @@ public class BSTree {
             }
         } else {
             BinaryTree min = findMin(right);
-
         }
 
 

@@ -128,7 +128,19 @@ public abstract class  AbstractBootstrap<B extends AbstractBootstrap<B,C>, C ext
         return channelFactory;
     }
 
+    final EventLoopGroup group() {
+        return group;
+    }
+
     public abstract B clone();
+
+    private ChannelFuture doBind(final SocketAddress localAddress) {
+        ChannelFuture regFuture = initAndRegister();
+        Channel channel = regFuture.channel();
+        if (regFuture.cause() != null) {
+            return regFuture;
+        }
+    }
 
     final ChannelFuture initAndRegister() {
         final  Channel channel = channelFactory().newChannel();
@@ -139,7 +151,15 @@ public abstract class  AbstractBootstrap<B extends AbstractBootstrap<B,C>, C ext
             return new DefaultChannelPromise(channel, GlobalEventExecutor.INSTANCE).setFailure(t);
         }
 
-        return null;
+        ChannelFuture regFuture = group().register(channel);
+        if (regFuture.cause() != null) {
+             if(channel.isRegistered()) {
+                 channel.close();
+             }else {
+                 channel.unsafe().closeForcibly();
+             }
+        }
+        return regFuture;
     }
 
     abstract void init(Channel channel) throws Exception;
