@@ -80,13 +80,21 @@ public class BSTree {
             if (b.parent.left == b) {
                 b.parent.left = min;
                 min.left = b.left;
+                if (b.right != min) {
                 min.right = b.right;
-                delete(right, min.value);
+
+                    delete(right, min.value);
+                }
+
             } else {
                 b.parent.right = min;
                 min.left =  b.left;
+                if (b.right != min) {
                 min.right = b.right;
-                delete(left,min.value);
+
+                    delete(left,min.value);
+                }
+
             }
         }
 
