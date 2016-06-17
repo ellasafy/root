@@ -43,6 +43,9 @@ public class MemoryAddress {
             long  maxDirectMemory = ((Number) m.invoke(null)).longValue();
             System.out.println(maxDirectMemory);
             System.out.println(maxDirectMemory/1024/1024);
+
+            ///two
+            maxDirectMemory = Runtime.getRuntime().maxMemory();
         } catch (Throwable t) {
             // Ignore
             t.printStackTrace();
