@@ -3,6 +3,7 @@ package io.neo.favor;
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 
@@ -31,5 +32,20 @@ public class MemoryAddress {
     }
 
 
+    }
+
+
+    public void maxDirectMemorySize() {
+        try {
+            // Try to get from sun.misc.VM.maxDirectMemory() which should be most accurate.
+            Class<?> vmClass = Class.forName("sun.misc.VM", true, ClassLoader.getSystemClassLoader());
+            Method m = vmClass.getDeclaredMethod("maxDirectMemory");
+            long  maxDirectMemory = ((Number) m.invoke(null)).longValue();
+            System.out.println(maxDirectMemory);
+            System.out.println(maxDirectMemory/1024/1024);
+        } catch (Throwable t) {
+            // Ignore
+            t.printStackTrace();
+        }
     }
 }
