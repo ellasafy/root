@@ -34,6 +34,9 @@ public class MemoryAddress {
 
     }
 
+    public void regular() {
+        System.out.println("restaurant/_wx4gdu7dz_sms".matches("^/restaurant/_[a-zA-Z0-9_]+$"));
+    }
 
     public void maxDirectMemorySize() {
         try {
