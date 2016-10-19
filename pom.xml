@@ -33,6 +33,11 @@
       <artifactId>mavibot</artifactId>
       <version>1.0.0-M8</version>
     </dependency>
+    <dependency>
+      <groupId>com.typesafe.akka</groupId>
+      <artifactId>akka-actor_2.10</artifactId>
+      <version>2.3.15</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
